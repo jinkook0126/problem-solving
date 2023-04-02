@@ -24,22 +24,7 @@ rl.on("line", function (line) {
   input.push(line.trim());
 }).on("close", function () {
   input.shift();
-  const history = input.map((x) => x.split(" ")[1]);
-  const arr = input.map((x) => {
-    const tmp = x.split(" ");
-    return [+tmp[0], tmp[1]];
-  });
-  arr.sort((a, b) => {
-    if (a[0] === b[0]) {
-      if (history.indexOf(a[1]) < history.indexOf(b[1])) {
-        return -1;
-      } else {
-        return 1;
-      }
-    } else {
-      return a[0] - b[0];
-    }
-  });
-  console.log(arr.map((x) => `${x[0]} ${x[1]}`).join("\n"));
+  input.sort((a, b) => Number(a.split(" ")[0]) - Number(b.split(" ")[0]));
+  console.log(input.join("\n"));
   process.exit();
 });
