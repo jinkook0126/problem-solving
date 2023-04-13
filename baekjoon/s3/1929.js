@@ -20,6 +20,6 @@ rl.on("line", function (line) {
       arr[j] = 0;
     }
   }
-  console.log(arr.filter((x) => x !== 0 && x >= N).join("\n"));
+  console.log(arr.filter((x) => x !== 0 && x >= N && x !== 1).join("\n"));
   process.exit();
 });
