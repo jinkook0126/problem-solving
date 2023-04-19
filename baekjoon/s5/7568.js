@@ -1,11 +1,5 @@
 /*
 https://www.acmicpc.net/problem/7568
-
-비고
-재귀함수로 팩토리얼을 구현하여 값을 구해 0의 개수를 찾았지만, 
-위와 같은 방식으로 하면 시간초과가 난다.
-값을 찾는게 아니라 0의 갯수를 찾는 것이기 때문에 규칙을 찾아 해결해야 한다.
-https://itadventure.tistory.com/22
  */
 const readline = require("readline");
 const rl = readline.createInterface({
