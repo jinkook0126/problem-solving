@@ -27,7 +27,7 @@ rl.on("line", function (line) {
     graph[b].push(a);
   });
   graph.forEach((line) => {
-    line.sort((a, b) => a - b);
+    line.sort((a, b) => b - a);
   });
   const DFS = (V) => {
     visited[V] = ++cnt;
