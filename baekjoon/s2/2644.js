@@ -18,7 +18,6 @@ rl.on("line", function (line) {
   const m = parseInt(input.shift());
   const visited = Array(N + 1).fill(0);
   const answer = Array(N + 1).fill(0);
-  let cnt = 0;
   const queue = [from];
   visited[from] = 1;
   const graph = Array(N + 1)
