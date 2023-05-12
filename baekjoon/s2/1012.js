@@ -1,5 +1,5 @@
 /*
-https://www.acmicpc.net/problem/
+https://www.acmicpc.net/problem/1012
  */
 const readline = require("readline");
 const rl = readline.createInterface({
