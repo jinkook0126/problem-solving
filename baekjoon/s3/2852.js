@@ -52,20 +52,16 @@ rl.on("line", function (line) {
     }
     if (record) {
       if (sc1 > sc2) {
-        // t1 = t1 + time - input[i - 1].time;
         t1 = calcTime(calcTime(t1, time, "+"), prevTime, "-");
         win = 1;
       } else if (sc1 < sc2) {
-        // t2 = t2 + time - input[i - 1].time;
         t2 = calcTime(calcTime(t2, time, "+"), prevTime, "-");
         win = 2;
       } else {
         record = false;
         if (win === 1) {
-          //   t1 = t1 + time - input[i - 1].time;
           t1 = calcTime(calcTime(t1, time, "+"), prevTime, "-");
         } else {
-          //   t2 = t2 + time - input[i - 1].time;
           t2 = calcTime(calcTime(t2, time, "+"), prevTime, "-");
         }
         win = -1;
@@ -78,14 +74,11 @@ rl.on("line", function (line) {
   const prevTime = input.at(-1).split(" ")[1];
   if (record) {
     if (win === 1) {
-      // t1 = t1 + 4800 - input[i - 1].time;
       t1 = calcTime(calcTime(t1, "48:00", "+"), prevTime, "-");
     } else {
-      // t2 = t2 + 4800 - input[i - 1].time;
       t2 = calcTime(calcTime(t2, "48:00", "+"), prevTime, "-");
     }
   }
-  //   const team1 = t1.split(":").map((x) => `0${x}`.slice(-2).join(":"));
   const team1 = t1
     .split(":")
     .map((x) => `0${x}`.slice(-2))
