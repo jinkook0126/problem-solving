@@ -18,16 +18,16 @@ rl.on("line", function (line) {
     const [gender, num] = input[i].split(" ").map((x) => +x);
     if (gender === 1) {
       for (let j = num; j <= n; j++) {
-        if (j % num === 0) lamp[j] = !lamp[j];
+        if (j % num === 0) lamp[j] = Math.abs(lamp[j] - 1);
       }
     } else {
-      lamp[num] = !lamp[num];
+      lamp[num] = Math.abs(lamp[num] - 1);
       let lt = num - 1;
       let rt = num + 1;
       while (lt >= 1 && rt <= n) {
         if (lamp[lt] === lamp[rt]) {
-          lamp[lt] = !lamp[lt];
-          lamp[rt] = !lamp[rt];
+          lamp[lt] = Math.abs(lamp[lt] - 1);
+          lamp[rt] = Math.abs(lamp[rt] - 1);
           lt -= 1;
           rt += 1;
         } else {
@@ -39,12 +39,7 @@ rl.on("line", function (line) {
   lamp.shift();
   const ans = [];
   while (lamp.length) {
-    ans.push(
-      lamp
-        .splice(0, 20)
-        .map((x) => (x ? "1" : "0"))
-        .join(" ")
-    );
+    ans.push(lamp.splice(0, 20).join(" "));
   }
   console.log(ans.join("\n"));
   process.exit();
