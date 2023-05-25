@@ -20,19 +20,16 @@ rl.on("line", function (line) {
     .map(() => Array(k + 1).fill(0));
 
   for (let i = 1; i <= n; i++) {
-    for (let j = 1; j <= k; j++) {
+    for (let j = 0; j <= k; j++) {
       if (j < arr[i - 1]) {
         dp[i][j] = dp[i - 1][j];
+      } else if (j === arr[i - 1]) {
+        dp[i][j] = dp[i - 1][j] + 1;
       } else {
-        if (arr[i - 1] === 1) {
-          dp[i][j] = dp[i - 1][j] + 1;
-        } else {
-          dp[i][j] = dp[i - 1][j] + parseInt(j / arr[i - 1]);
-        }
+        dp[i][j] = dp[i][j - arr[i - 1]] + dp[i - 1][j];
       }
     }
   }
-  console.log(dp);
   console.log(dp[n][k]);
   process.exit();
 });
