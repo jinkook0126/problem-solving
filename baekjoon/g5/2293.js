@@ -15,21 +15,14 @@ rl.on("line", function (line) {
     .split(" ")
     .map((x) => +x);
   const arr = input.map((x) => +x);
-  const dp = Array(n + 1)
-    .fill()
-    .map(() => Array(k + 1).fill(0));
+  const dp = Array(k + 1).fill(0);
+  dp[0] = 1;
 
-  for (let i = 1; i <= n; i++) {
-    for (let j = 0; j <= k; j++) {
-      if (j < arr[i - 1]) {
-        dp[i][j] = dp[i - 1][j];
-      } else if (j === arr[i - 1]) {
-        dp[i][j] = dp[i - 1][j] + 1;
-      } else {
-        dp[i][j] = dp[i][j - arr[i - 1]] + dp[i - 1][j];
-      }
+  for (let i = 0; i < n; i++) {
+    for (let j = arr[i]; j <= k; j++) {
+      dp[j] = dp[j - arr[i]] + dp[j];
     }
   }
-  console.log(dp[n][k]);
+  console.log(dp[k]);
   process.exit();
 });
