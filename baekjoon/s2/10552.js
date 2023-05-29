@@ -16,19 +16,17 @@ rl.on("line", function (line) {
   );
 }).on("close", function () {
   const [N, M, P] = input.shift();
-  const hate = new Set();
-  const hateArr = [];
-  const favoArr = [];
+  const map = new Map();
   for (const [a, b] of input) {
-    favoArr.push(a);
-    hateArr.push(b);
-    hate.add(b);
+    if (!map.has(b)) {
+      map.set(b, a);
+    }
   }
   let ans = 0;
   const visited = Array(M + 1).fill(0);
   const changeChannel = (ch) => {
-    if (hate.has(ch)) {
-      const to = favoArr[hateArr.indexOf(ch)];
+    if (map.has(ch)) {
+      const to = map.get(ch);
       if (visited[to] === 0) {
         visited[to] = 1;
         ans += 1;
