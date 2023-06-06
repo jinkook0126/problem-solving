@@ -16,11 +16,15 @@ rl.on("line", function (line) {
   const ans = [];
   for (let i = 0; i < ducks.length; i++) {
     let duck = ducks[i];
+    const tmp = [];
+    while (duck >= 2) {
+      tmp.push(duck);
+      duck = parseInt(duck / 2);
+    }
     let flag = true;
-    while (duck >= 1) {
-      if (ch[duck] === 0) {
-        duck = parseInt(duck / 2);
-      } else {
+    for (let i = tmp.length - 1; i >= 0; i--) {
+      if (ch[tmp[i]] === 1) {
+        ans.push(tmp[i]);
         flag = false;
         break;
       }
@@ -28,8 +32,6 @@ rl.on("line", function (line) {
     if (flag) {
       ch[ducks[i]] = 1;
       ans.push(0);
-    } else {
-      ans.push(duck);
     }
   }
   console.log(ans.join("\n"));
