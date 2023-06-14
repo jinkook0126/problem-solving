@@ -14,28 +14,14 @@ rl.on("line", function (line) {
 }).on("close", function () {
   const [N, M] = input.shift();
   const arr = input.shift();
+  const prefixSum = Array(N + 1).fill(0);
   const ans = [];
-  let l = 0;
-  let r = 0;
-  let sum = arr[0];
-
+  for (let i = 1; i <= N; i++) {
+    prefixSum[i] = prefixSum[i - 1] + arr[i - 1];
+  }
   for (let i = 0; i < input.length; i++) {
-    let [from, to] = input[i];
-    from -= 1;
-    to -= 1;
-    while (l !== from || r !== to) {
-      if (l < from) {
-        sum -= arr[l++];
-      } else if (l > from) {
-        sum += arr[++l];
-      }
-      if (r < to) {
-        sum += arr[++r];
-      } else if (r > to) {
-        sum -= arr[r++];
-      }
-    }
-    ans.push(sum);
+    const [from, to] = input[i];
+    ans.push(prefixSum[to] - prefixSum[from - 1]);
   }
   console.log(ans.join("\n"));
   process.exit();
