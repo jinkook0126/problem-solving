@@ -1,6 +1,4 @@
-/*
-https://www.acmicpc.net/problem/1003
- */
+// S2
 const readline = require("readline");
 const rl = readline.createInterface({
   input: process.stdin,
