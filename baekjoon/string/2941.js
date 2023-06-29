@@ -1,5 +1,5 @@
 /*
-
+S5 : 크로아티아 알파벳
 */
 const readline = require("readline");
 const rl = readline.createInterface({
@@ -14,4 +14,3 @@ rl.on("line", function (line) {
   console.log(str.length);
   process.exit();
 });
-// ljes=njak
