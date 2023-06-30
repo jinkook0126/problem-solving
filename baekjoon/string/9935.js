@@ -12,23 +12,16 @@ rl.on("line", function (line) {
 }).on("close", function () {
   let str = input[0];
   const boom = input[1];
-  const boomLen = boom.length - 1;
-  const boomEnd = boom.charAt(boom.length - 1);
+  const boomLen = boom.length;
+  // const boomEnd = boom.charAt(boom.length - 1);
   const stack = [];
+  const tmp = [];
   for (const c of str) {
-    if (c !== boomEnd) {
-      stack.push(c);
-    } else {
-      const tmp = stack
-        .join("")
-        .substring(stack.length - boom.length + 1, stack.length);
-      if (`${tmp}${c}` === boom) {
-        for (let i = 0; i < boomLen; i++) {
-          stack.pop();
-        }
-      } else {
-        stack.push(c);
+    if (tmp.length === boomLen) {
+      if (tmp.join("") === boom) {
       }
+    } else {
+      tmp.push(c);
     }
   }
   console.log(stack.join("") || "FRULA");
