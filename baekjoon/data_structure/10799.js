@@ -18,10 +18,8 @@ rl.on("line", function (line) {
     } else {
       stack.pop();
       if (flag) {
-        // 레이저 일 때
         ans += stack.length;
       } else {
-        // 쉬기둥일때
         ans += 1;
       }
       flag = false;
