@@ -23,7 +23,7 @@ rl.on("line", function (line) {
           let left = true;
           let right = true;
           let num = 1;
-          const tmpCoor = [];
+          const tmpCoor = [[i, j]];
           let cnt = 1;
           while (left || right) {
             let tx = i + dx[k] * num;
@@ -62,22 +62,18 @@ rl.on("line", function (line) {
           if (cnt === 5) {
             win = input[i][j];
             tmpCoor.sort((a, b) => {
-              if (a[0] === b[0]) {
-                return a[1] - b[1];
-              } else {
+              if (a[1] === b[1]) {
                 return a[0] - b[0];
+              } else {
+                return a[1] - b[1];
               }
             });
             coordinate = [tmpCoor[0][0] + 1, tmpCoor[0][1] + 1];
             break;
-          } else if (cnt > 5) {
-            win = null;
           }
         }
       }
-      // if (win !== null) break;
     }
-    // if (win !== null) break;
   }
   if (win === null) {
     console.log(0);
